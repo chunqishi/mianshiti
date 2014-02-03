@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 ###
-##  A simple command line to run non-package java class or testcase class.
+##  A simple linux command line to run non-package java class or testcase class.
 #   @Author: diligence.cs@gmail.com
 #   @QQ: 86350181
 #
