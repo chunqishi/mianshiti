@@ -14,7 +14,7 @@ ClassName=${1%.*}
 #echo $ClassName
 
 Jars=$(find $LibDir -type f -name '*.jar'|tr '\n' ':')
-echo $Jars
+#echo $Jars
 
 echo "\nCompiling ..."
 echo "<------------ compile ------------------"
@@ -27,6 +27,9 @@ echo "Compiling Succeeded !\n"
     if  [[ $ClassName == 'Test'* ]]; then
         echo "\nTesting ..."
         echo ">--------------- test ------------------"
+        if [ -f cls/$ClassName.class ]; then
+            ClassName=cls.$ClassName
+        fi
         java -cp ".:$Jars" org.junit.runner.JUnitCore $ClassName  
         errno=$?
         echo "---------------------------------------<"
@@ -41,12 +44,15 @@ echo "Compiling Succeeded !\n"
     else
         echo "\nRunning ..."
         echo ">--------------- run -------------------"
+        if [ -f cls/$ClassName.class ]; then
+            ClassName=cls.$ClassName
+        fi
         java -cp ".:$Jars" $ClassName  
 
         echo "---------------------------------------<"
         echo "Running Succeeded !\n"
+    # rm $ClassName.class
     fi
-    rm $ClassName.class
 else
     echo "Edit ( Press [Enter] to continue ) ..."
     read keypress
