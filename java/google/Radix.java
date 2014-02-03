@@ -6,7 +6,7 @@
  **/
 
 
-class Radix {
+public class Radix {
 
 
     public int [] sortRadix(int[] data, int len ) {
